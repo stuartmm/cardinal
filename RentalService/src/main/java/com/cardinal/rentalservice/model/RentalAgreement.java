@@ -152,7 +152,7 @@ public class RentalAgreement {
 		rentalAgreementString = rentalAgreementString + "Discount percent: " + this.discountPercent + "\n";
 		rentalAgreementString = rentalAgreementString + "Amount without discount: " + "$" + formatDollars(this.totalAmountWithoutDiscount.toString()) + "\n";
 		rentalAgreementString = rentalAgreementString + "Discount amount: " + "$" + formatDollars(this.discountAmount.toString()) + "\n";
-		rentalAgreementString = rentalAgreementString + "Final charge: " + "$" +  formatDollars(this.totalAmountWithoutDiscount.toString()) + "\n";
+		rentalAgreementString = rentalAgreementString + "Final charge: " + "$" +  formatDollars(this.finalCharge.toString()) + "\n";
 		
 		return rentalAgreementString;
 	}

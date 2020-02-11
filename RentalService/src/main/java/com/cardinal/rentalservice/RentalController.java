@@ -49,8 +49,8 @@ public class RentalController {
 		LocalDate checkout = LocalDate.of(year, month, day);
 		ToolRentalRequest toolRentalRequest = new ToolRentalRequest(ToolCode.valueOf(toolcode), rentalDayCount, discountPercent, checkout);
 		
-		rentalAgreement = rentalAgreementUtility.populateRentalAgreement(toolRentalRequest);
-
+		rentalAgreement = rentalAgreementUtility.calculateRentalAgreement(toolRentalRequest);
+		System.out.println(rentalAgreement.toString());
 		response = new ResponseEntity<RentalAgreement>(rentalAgreement, HttpStatus.OK);
 		return response;
 	}

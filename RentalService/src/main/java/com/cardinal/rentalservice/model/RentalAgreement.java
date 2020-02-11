@@ -132,5 +132,43 @@ public class RentalAgreement {
 		this.finalCharge = finalCharge;
 	}
 	
+	@Override
+	public String toString(){
+		
+		String rentalAgreementString = "";
+		rentalAgreementString = rentalAgreementString + "Tool code: " + this.tool + "\n";
+		rentalAgreementString = rentalAgreementString + "Tool type: " + this.tool.getToolType() + "\n";
+		rentalAgreementString = rentalAgreementString + "Tool brand: " + this.tool.getToolBrand() + "\n";
+		rentalAgreementString = rentalAgreementString + "Rental day count: " + this.rentalDayCount + "\n";
+		
+		rentalAgreementString = rentalAgreementString + "Checkout date: " + this.checkoutDate.getMonthValue() 
+		+ "/" + this.checkoutDate.getDayOfMonth() + "/" + Integer.toString(this.checkoutDate.getYear()).substring(2, 4) + "\n";
+		
+		rentalAgreementString = rentalAgreementString + "Due date: " + this.dueDate.getMonthValue() 
+		+ "/" + this.dueDate.getDayOfMonth() + "/" + Integer.toString(this.dueDate.getYear()).substring(2, 4) + "\n";
+		
+		rentalAgreementString = rentalAgreementString + "Chargeable days: " + this.chargeableDays + "\n";
+		rentalAgreementString = rentalAgreementString + "Daily rental charge: " + "$" + this.tool.getDailyPrice() + "\n";
+		rentalAgreementString = rentalAgreementString + "Discount percent: " + this.discountPercent + "\n";
+		rentalAgreementString = rentalAgreementString + "Amount without discount: " + "$" + formatDollars(this.totalAmountWithoutDiscount.toString()) + "\n";
+		rentalAgreementString = rentalAgreementString + "Discount amount: " + "$" + formatDollars(this.discountAmount.toString()) + "\n";
+		rentalAgreementString = rentalAgreementString + "Final charge: " + "$" +  formatDollars(this.totalAmountWithoutDiscount.toString()) + "\n";
+		
+		return rentalAgreementString;
+	}
+	
+	private String formatDollars(String dollars){
+		
+		String wholeDollars = dollars.substring(0, dollars.length() - 3);
+		String formatDollars = "";
+		for(int i = 0; i < wholeDollars.length(); i ++){
+			if (i % 3 == 0 && i != 0){
+				formatDollars = "," + formatDollars;
+			}
+			formatDollars = wholeDollars.charAt(wholeDollars.length() - i - 1) + formatDollars;
+		}
+		formatDollars = formatDollars + dollars.substring(dollars.length() - 3, dollars.length());
+		return formatDollars;
+	}
 	
 }

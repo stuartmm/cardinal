@@ -13,8 +13,8 @@ import com.cardinal.rentalservice.model.ToolRentalRequest;
 
 @Component
 public class RentalAgreementUtility {
-
-	public RentalAgreement populateRentalAgreement(ToolRentalRequest toolRentalRequest){
+	
+	public RentalAgreement calculateRentalAgreement(ToolRentalRequest toolRentalRequest){
 		
 		LocalDate dueDate = toolRentalRequest.getCheckoutDate().plusDays(toolRentalRequest.getRentalDayCount());
 		BigDecimal chargeableDays = new BigDecimal(getChargeableDays(toolRentalRequest));
@@ -82,6 +82,5 @@ public class RentalAgreementUtility {
 		}
 		return nonChargeableDays;
 	}
-	
 	
 }
